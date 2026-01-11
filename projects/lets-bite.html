@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Let's Bite - Modern Food Delivery Platform built with Django. M-Pesa integration, real-time order tracking, and seamless restaurant management.">
+    <title>Let's Bite - Food Delivery Platform</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@500;600;700;800&family=Outfit:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .project-header {
+            padding: 60px 0;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-box {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .feature-box:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-category {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .tech-category h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .tech-item {
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .screenshot-item {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .screenshot-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(131, 56, 236, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 3rem;
+        }
+
+        .screenshot-label {
+            padding: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .challenges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .challenge-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .challenge-problem {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .challenge-solution {
+            background: rgba(0, 217, 255, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 1rem;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .results {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(131, 56, 236, 0.1) 100%);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-metric {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .cta-btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--dark);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .project-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-link {
+            background: #1a1f3a;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .project-link h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .project-link p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <div class="brand-logo">B</div>
+                <span class="brand-text">RAESON</span>
+            </a>
+            <div class="nav-menu">
+                <a href="../index.html#about" class="nav-link">About</a>
+                <a href="../index.html#work" class="nav-link">Work</a>
+                <a href="../index.html#skills" class="nav-link">Skills</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-action">
+                <button class="theme-toggle" aria-label="Toggle theme">◐</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="project-container">
+        <!-- Back Link -->
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+
+        <!-- Project Header -->
+        <section class="project-header">
+            <h1 class="project-title">Let's Bite 🍕</h1>
+            <p class="project-subtitle">A modern, full-featured food delivery platform connecting hungry customers with local restaurants. Built with Django, featuring M-Pesa payment integration, real-time order tracking, and comprehensive restaurant management tools.</p>
+            
+            <div class="project-stats">
+                <div class="stat-item">
+                    <p class="stat-label">Timeline</p>
+                    <p class="stat-value">6 Months</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-label">Status</p>
+                    <p class="stat-value">Live</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-label">Users</p>
+                    <p class="stat-value">Testing Phase</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Browse & Discover</h3>
+                    <p class="feature-desc">Explore local restaurants and their menu items with advanced filtering and search capabilities.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🛒</div>
+                    <h3 class="feature-title">Smart Shopping Cart</h3>
+                    <p class="feature-desc">Intuitive cart management with quantity controls and real-time price updates.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💳</div>
+                    <h3 class="feature-title">M-Pesa Payments</h3>
+                    <p class="feature-desc">Secure M-Pesa payment gateway integration for seamless transactions.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">Real-time Tracking</h3>
+                    <p class="feature-desc">Monitor order status from packing to delivery with live updates.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🏢</div>
+                    <h3 class="feature-title">Restaurant Dashboard</h3>
+                    <p class="feature-desc">Comprehensive management tools for restaurant owners to handle orders and inventory.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="section">
+            <h2 class="section-title">Screenshots</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <img src="screenshots/customer-page-lets-bite.png" alt="Customer App" class="screenshot-image" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="screenshot-label">Customer App</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshots/restaurants-page-lets-bite.png" alt="Restaurant Dashboard" class="screenshot-image" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="screenshot-label">Restaurant Dashboard</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshots/order-page-lets-bite.png" alt="Order Tracking" class="screenshot-image" style="width: 100%; height: 250px; object-fit: cover;">
+                    <div class="screenshot-label">Order Tracking</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack -->
+        <section class="section">
+            <h2 class="section-title">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">Django 5.1.3</div>
+                        <div class="tech-item">Python</div>
+                        <div class="tech-item">Django REST Framework</div>
+                        <div class="tech-item">django-allauth (Authentication)</div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Database</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">PostgreSQL (Production)</div>
+                        <div class="tech-item">MySQL Support</div>
+                        <div class="tech-item">SQLite (Development)</div>
+                        <div class="tech-item">Data Optimization</div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend & Storage</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">Django Templates</div>
+                        <div class="tech-item">HTML5 & CSS3</div>
+                        <div class="tech-item">AWS S3 (via django-storages)</div>
+                        <div class="tech-item">Pillow (Image Processing)</div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Payments & External</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">M-Pesa Gateway</div>
+                        <div class="tech-item">AWS Boto3</div>
+                        <div class="tech-item">Requests Library</div>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Deployment</h4>
+                    <div class="tech-list">
+                        <div class="tech-item">Vercel (Serverless)</div>
+                        <div class="tech-item">Gunicorn</div>
+                        <div class="tech-item">Environment Variables</div>
+                        <div class="tech-item">Docker Ready</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges & Solutions -->
+        <section class="section">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            <div class="challenges">
+                <div class="challenge-card">
+                    <h4 class="challenge-title">🔐 Payment Integration</h4>
+                    <p class="challenge-problem">Integrating M-Pesa with proper error handling, retry logic, and transaction verification</p>
+                    <div class="challenge-solution">Implemented robust callback handlers, transaction logging, and user-friendly payment feedback with real-time status updates</div>
+                </div>
+                <div class="challenge-card">
+                    <h4 class="challenge-title">⚡ Performance at Scale</h4>
+                    <p class="challenge-problem">Optimizing database queries for menu browsing with thousands of items across multiple restaurants</p>
+                    <div class="challenge-solution">Implemented query optimization and database indexing to achieve < 500ms response times</div>
+                </div>
+                <div class="challenge-card">
+                    <h4 class="challenge-title">🖼️ Image Management</h4>
+                    <p class="challenge-problem">Handling and serving restaurant and menu item images efficiently with AWS S3</p>
+                    <div class="challenge-solution">Implemented image compression, CDN integration, and lazy loading for optimal performance</div>
+                </div>
+                <div class="challenge-card">
+                    <h4 class="challenge-title">🔄 Order Status Management</h4>
+                    <p class="challenge-problem">Real-time order status updates across multiple user types (customers, restaurants, delivery)</p>
+                    <div class="challenge-solution">Built state machine for order lifecycle, automated status transitions, and WebSocket support for live updates</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h3 class="cta-title">Interested in This Project?</h3>
+            <p>Learn more about how I can build scalable, feature-rich applications for your business.</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="cta-btn cta-primary">Start a Project</a>
+                <a href="https://github.com/braeson-nyahera/lets-bite" target="_blank" rel="noopener" class="cta-btn cta-secondary">View Code</a>
+                <a href="https://lets-bite.onrender.com/" target="_blank" rel="noopener" class="cta-btn cta-secondary">View Live</a>
+            </div>
+        </section>
+
+        <!-- More Projects -->
+        <section class="section">
+            <h2 class="section-title">More Projects</h2>
+            <div class="project-nav">
+                <a href="mindmate.html" class="project-link">
+                    <h4>MindMate</h4>
+                    <p>Educational platform connecting students with tutors through forums and messaging</p>
+                </a>
+                <a href="smarthealth.html" class="project-link">
+                    <h4>SmartHealth Dashboard</h4>
+                    <p>Premium Flutter health tracking with Google Fit integration and real-time metrics</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Back to Home -->
+        <div style="text-align: center; padding: 3rem 0; margin-top: 3rem; border-top: 1px solid var(--border);">
+            <a href="../index.html" style="display: inline-block; padding: 0.75rem 2rem; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: var(--dark); border-radius: 8px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">← Back to Portfolio</a>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
