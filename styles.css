@@ -1,16 +1,21 @@
 /* ===== CSS VARIABLES & ROOT ===== */
 :root {
-    --primary: #00d9ff;
-    --secondary: #ff006e;
-    --accent: #8338ec;
-    --dark: #0a0e27;
-    --darker: #050710;
+    --primary: #d4a373ff;
+    --secondary: #faedcdff;
+    --accent: #ccd5aeff;
+    --tea-green: #ccd5aeff;
+    --beige: #e9edc9ff;
+    --cornsilk: #fefae0ff;
+    --papaya-whip: #faedcdff;
+    --light-bronze: #d4a373ff;
+    --dark: #3d3530;
+    --darker: #2f2722;
     --light: #f8f9fa;
     --text-primary: #ffffff;
-    --text-secondary: #b0b4c0;
+    --text-secondary: #d4c5b9;
     --border: rgba(255, 255, 255, 0.15);
-    --bg-card: #1a1f3a;
-    --bg-card-hover: #232a45;
+    --bg-card: #4a403a;
+    --bg-card-hover: #5a5050;
     --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -64,7 +69,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--dark) 0%, #1a1f3a 100%);
+    background: linear-gradient(135deg, var(--dark) 0%, #3d3530 100%);
     z-index: -1;
     overflow: hidden;
 }
@@ -74,8 +79,8 @@ a:hover {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(212, 163, 115, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 163, 115, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: gridShift 20s linear infinite;
 }
@@ -275,12 +280,12 @@ a:hover {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: var(--dark);
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 20px rgba(212, 163, 115, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+    box-shadow: 0 0 30px rgba(212, 163, 115, 0.5);
 }
 
 .btn-secondary {
@@ -383,7 +388,7 @@ a:hover {
 }
 
 .window-header {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     padding: 1rem;
     display: flex;
     gap: 0.5rem;
@@ -457,7 +462,7 @@ a:hover {
 }
 
 .highlight:hover {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
 }
 
@@ -553,15 +558,15 @@ a:hover {
 }
 
 .timeline-item:hover {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
     transform: translateX(10px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
 }
 
 .timeline-item:hover::before {
     background: var(--secondary);
-    box-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
+    box-shadow: 0 0 15px rgba(250, 237, 205, 0.5);
 }
 
 .timeline-year {
@@ -594,11 +599,11 @@ a:hover {
 
 .tech-stack span {
     font-size: 0.8rem;
-    background: rgba(0, 217, 255, 0.2);
+    background: rgba(212, 163, 115, 0.2);
     color: var(--primary);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    border: 1px solid rgba(0, 217, 255, 0.3);
+    border: 1px solid rgba(212, 163, 115, 0.3);
 }
 
 .timeline-arrow {
@@ -628,10 +633,9 @@ a:hover {
 }
 
 .skill-category:hover {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
     transform: translateY(-5px);
-}
 
 .skill-category h4 {
     font-size: 1.2rem;
@@ -648,28 +652,27 @@ a:hover {
 }
 
 .tag {
-    background: rgba(0, 217, 255, 0.15);
+    background: rgba(212, 163, 115, 0.15);
     color: var(--primary);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
-    border: 1px solid rgba(0, 217, 255, 0.3);
+    border: 1px solid rgba(212, 163, 115, 0.3);
     transition: var(--transition);
     cursor: default;
 }
 
 .tag:hover {
-    background: rgba(0, 217, 255, 0.3);
+    background: rgba(212, 163, 115, 0.3);
     border-color: var(--primary);
 }
 
 /* ===== STATS SECTION ===== */
 .stats {
     padding: 80px 0;
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(131, 56, 236, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(212, 163, 115, 0.1) 0%, rgba(204, 213, 170, 0.1) 100%);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-}
 
 .stats-grid {
     display: grid;
@@ -688,9 +691,8 @@ a:hover {
 
 .stat:hover {
     transform: scale(1.05);
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
-}
 
 .stat-number {
     font-size: 3rem;
@@ -729,11 +731,10 @@ a:hover {
 }
 
 .testimonial:hover {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
     transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
-}
+    box-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
 
 .testimonial-stars {
     color: #ffd700;
@@ -813,10 +814,9 @@ a:hover {
 }
 
 .contact-link:hover {
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
     transform: translateX(5px);
-}
 
 .contact-icon {
     font-size: 1.5rem;
@@ -856,10 +856,9 @@ a:hover {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    background: rgba(0, 217, 255, 0.1);
+    background: rgba(212, 163, 115, 0.1);
     border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
-}
+    box-shadow: 0 0 20px rgba(212, 163, 115, 0.2);
 
 .form-group label {
     position: absolute;
@@ -896,10 +895,9 @@ a:hover {
 
 .form-status.error {
     display: block;
-    background: rgba(255, 0, 110, 0.2);
-    border: 1px solid rgba(255, 0, 110, 0.5);
+    background: rgba(250, 237, 205, 0.2);
+    border: 1px solid rgba(250, 237, 205, 0.5);
     color: var(--secondary);
-}
 
 /* ===== FOOTER ===== */
 .footer {

@@ -137,5 +137,3 @@ If you improve this portfolio, consider sharing your enhancements with others!
 ---
 
 **Built with ❤️ and clean code**
-
-
