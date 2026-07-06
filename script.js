@@ -19,18 +19,22 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
 // ===== HAMBURGER MENU =====
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
 // ===== THEME TOGGLE =====
 const themeToggle = document.querySelector('.theme-toggle');
@@ -39,12 +43,14 @@ const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'lig
 
 document.documentElement.setAttribute('data-theme', savedTheme);
 
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
 
 // ===== FORM HANDLING =====
 const contactForm = document.getElementById('contactForm');
@@ -56,7 +62,7 @@ const EMAILJS_PUBLIC_KEY = '_r6kMjdcTQJDBGamg';
 const EMAILJS_SERVICE_ID = 'service_7ukeyx1'; 
 const EMAILJS_TEMPLATE_ID = 'template_wfwocuw';
 
-if (emailjs) {
+if (typeof emailjs !== 'undefined') {
     emailjs.init(EMAILJS_PUBLIC_KEY);
 }
 
@@ -264,3 +270,152 @@ function announceNavigation(target) {
     document.body.appendChild(announcement);
     setTimeout(() => announcement.remove(), 1000);
 }
+
+// ===== FETCH MEDIUM ARTICLES =====
+const MEDIUM_USERNAME = 'braebulimo';
+const RSS_FEED_URL = `https://medium.com/feed/@${MEDIUM_USERNAME}`;
+const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}`;
+
+// Fallback articles to show if the RSS parser fails or is offline
+const FALLBACK_ARTICLES = [
+    {
+        title: "Building Scalable Data Pipelines with Apache Spark and PostgreSQL",
+        pubDate: "2026-05-15 10:00:00",
+        link: "https://medium.com/@braebulimo",
+        guid: "fallback-1",
+        description: "A comprehensive guide on deploying scalable python ETL pipelines, optimizing postgresql database queries for large-scale analytics, handling data ingestion, and managing concurrent connections.",
+        categories: ["Spark", "PostgreSQL", "ETL", "Data Engineering"],
+        thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&auto=format&fit=crop&q=60"
+    },
+    {
+        title: "Machine Learning Pipelines: Best Practices and Feature Ingestion",
+        pubDate: "2026-03-22 14:30:00",
+        link: "https://medium.com/@braebulimo",
+        guid: "fallback-2",
+        description: "Explore the structural implementation of ML workflow principles. Master the separation of raw data ingestion, feature engineering, and model inference layers along with experiment tracking via MLflow.",
+        categories: ["Machine Learning", "MLflow", "Data Science", "Python"],
+        thumbnail: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=600&auto=format&fit=crop&q=60"
+    },
+    {
+        title: "Implementing Automated Data Workflows with Airflow and Docker",
+        pubDate: "2026-01-10 09:15:00",
+        link: "https://medium.com/@braebulimo",
+        guid: "fallback-3",
+        description: "Learn how to build, test, containerize, and schedule data workflows automatically using Apache Airflow workflow DAG configurations and multi-stage Docker containers.",
+        categories: ["Airflow", "Docker", "DevOps", "Data Engineering"],
+        thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop&q=60"
+    }
+];
+
+async function loadMediumArticles() {
+    const container = document.getElementById('medium-articles-container');
+    if (!container) return;
+
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+            // Render articles from RSS
+            renderArticles(data.items.slice(0, 3), container);
+        } else {
+            console.warn('Medium RSS API returned non-ok status, loading fallback articles.');
+            renderArticles(FALLBACK_ARTICLES, container, true);
+        }
+    } catch (error) {
+        console.error('Error fetching Medium articles:', error);
+        renderArticles(FALLBACK_ARTICLES, container, true);
+    }
+}
+
+function renderArticles(articles, container, isFallback = false) {
+    container.innerHTML = ''; // Clear loader
+
+    articles.forEach(article => {
+        // Parse date
+        let formattedDate = 'Recent';
+        if (article.pubDate) {
+            const dateObj = new Date(article.pubDate.replace(/-/g, "/")); // Fix Safari date parsing
+            if (!isNaN(dateObj.getTime())) {
+                formattedDate = dateObj.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
+        }
+
+        // Clean description/excerpt (strip HTML tags)
+        let excerpt = '';
+        if (article.description) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = article.description;
+            // Remove figure captions if any
+            const captions = tempDiv.querySelectorAll('figcaption');
+            captions.forEach(c => c.remove());
+            excerpt = tempDiv.textContent || tempDiv.innerText || '';
+            excerpt = excerpt.trim().substring(0, 140) + '...';
+        } else {
+            excerpt = 'Read the full article on Medium to learn more about this technology...';
+        }
+
+        // Get standard tags
+        const tags = article.categories && article.categories.length > 0 
+            ? article.categories.slice(0, 3) 
+            : ['Tech', 'Coding', 'Blogging'];
+
+        // Get thumbnail from article or parse first img from description
+        let thumbnail = article.thumbnail;
+        if (!thumbnail && article.description) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = article.description;
+            const imgs = tempDiv.querySelectorAll('img');
+            for (let img of imgs) {
+                const src = img.getAttribute('src');
+                // Skip Medium's tracking pixel (1x1 stat pixel)
+                if (src && !src.includes('stat?event') && !src.includes('medium.com/_/stat')) {
+                    thumbnail = src;
+                    break;
+                }
+            }
+        }
+
+        // Get thumbnail or placeholder
+        const imgHtml = thumbnail 
+            ? `<img src="${thumbnail}" alt="${article.title}" class="article-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+            : '';
+        const fallbackImgHtml = `<div class="article-img-fallback" ${thumbnail ? 'style="display:none;"' : ''}>⌨</div>`;
+
+        const card = document.createElement('article');
+        card.className = 'article-card';
+        card.innerHTML = `
+            <div class="article-img-wrapper">
+                ${imgHtml}
+                ${fallbackImgHtml}
+            </div>
+            <div class="article-body">
+                <div class="article-meta">
+                    <span>${formattedDate}</span>
+                    <span>•</span>
+                    <span>Medium</span>
+                    ${isFallback ? '<span style="color:var(--accent); font-size: 0.7rem;">[Pinned]</span>' : ''}
+                </div>
+                <h3 class="article-title">
+                    <a href="${article.link}" target="_blank" rel="noopener">${article.title}</a>
+                </h3>
+                <p class="article-excerpt">${excerpt}</p>
+                <div class="article-tags">
+                    ${tags.map(tag => `<span>#${tag.toLowerCase()}</span>`).join('')}
+                </div>
+                <div class="article-footer">
+                    <a href="${article.link}" target="_blank" rel="noopener" class="article-read-more">Read Article</a>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Call on load
+document.addEventListener('DOMContentLoaded', loadMediumArticles);
+
