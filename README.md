@@ -63,7 +63,7 @@ The portfolio is fully responsive and tested on:
 
 All sections adapt gracefully to different screen sizes.
 
-## ⚡ Performance Optimization
+##  Performance Optimization
 
 - **Minified CSS & JavaScript**: Ready for production
 - **Lazy Loading**: Images load on demand
