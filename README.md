@@ -2,36 +2,36 @@
 
 A premium, production-ready portfolio website hosted on GitHub Pages. This portfolio showcases professional expertise with detailed project pages, comprehensive skill sections, and modern design patterns.
 
-## 🎯 Features
+##  Features
 
 ### Design & UX
-- ✨ Modern, premium design with gradient effects and animations
-- 📱 Fully responsive across all devices (mobile, tablet, desktop)
-- 🎨 Smooth scroll animations and interactive elements
-- ⚡ Optimized performance with lazy loading and code splitting
-- 🔍 SEO-friendly structure and metadata
-- 🌈 Professional color scheme with accessible contrast ratios
+-  Modern, premium design with gradient effects and animations
+-  Fully responsive across all devices (mobile, tablet, desktop)
+-  Smooth scroll animations and interactive elements
+-  Optimized performance with lazy loading and code splitting
+-  SEO-friendly structure and metadata
+-  Professional color scheme with accessible contrast ratios
 
 ### Sections & Content
-- 🏠 Hero section with compelling headline and CTA
-- 💼 Core expertise showcase with 6 specialized areas
-- 🚀 Featured projects with individual detail pages
-- 📊 Statistics section with animated counters
-- 🛠️ Services offered
-- 📬 Contact form with validation
-- 🔗 Social media integration
+-  Hero section with compelling headline and CTA
+-  Core expertise showcase with 6 specialized areas
+-  Featured projects with individual detail pages
+-  Statistics section with animated counters
+-  Services offered
+-  Contact form with validation
+-  Social media integration
 
 ### Project Detail Pages
-- 📄 Individual pages for each project with full context
-- 📸 Project images/mockups section
-- 📋 Detailed project overview and achievements
-- 🛠️ Technologies used with categorization
-- 🎯 Challenges and solutions breakdown
-- 📈 Results and impact metrics
-- 🔄 Navigation between related projects
+-  Individual pages for each project with full context
+-  Project images/mockups section
+-  Detailed project overview and achievements
+-  Technologies used with categorization
+-  Challenges and solutions breakdown
+-  Results and impact metrics
+-  Navigation between related projects
 
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -53,7 +53,7 @@ The portfolio includes:
 8. Footer
 
 
-## 📱 Responsive Design
+##  Responsive Design
 
 The portfolio is fully responsive and tested on:
 - Desktop (1920px and above)
@@ -72,7 +72,7 @@ All sections adapt gracefully to different screen sizes.
 - **Hardware Acceleration**: Smooth animations using CSS transforms
 - **Page Load Time**: < 2 seconds on standard connections
 
-## 🔍 SEO Best Practices
+##  SEO Best Practices
 
 - Semantic HTML structure
 - Meta descriptions for all pages
@@ -82,12 +82,12 @@ All sections adapt gracefully to different screen sizes.
 - Accessible color contrasts
 - Proper heading hierarchy
 
-## 📱 Mobile Menu
+##  Mobile Menu
 
 The portfolio includes a responsive hamburger menu for mobile devices. The menu automatically appears on screens smaller than 768px and is fully functional with smooth animations.
 
 
-## 🧪 Testing
+##  Testing
 
 ### Browsers
 
@@ -98,7 +98,7 @@ The portfolio includes a responsive hamburger menu for mobile devices. The menu 
 - Mobile Chrome
 - Mobile Safari
 
-## 📈 Analytics (Optional)
+##  Analytics (Optional)
 
 To add Google Analytics:
 
@@ -117,7 +117,7 @@ To add Google Analytics:
 </script>
 ```
 
-## 📚 Additional Resources
+##  Additional Resources
 
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [GitHub Actions for Deployment](https://docs.github.com/en/actions)
@@ -126,14 +126,12 @@ To add Google Analytics:
 - [Web Performance](https://web.dev/performance/)
 - [Web Accessibility](https://www.w3.org/WAI/WCAG21/quickref/)
 
-## 📝 License
+##  License
 
 This project is open source and available under the MIT License.
 
-## 🤝 Contributing
+##  Contributing
 
 If you improve this portfolio, consider sharing your enhancements with others!
 
 ---
-
-**Built with ❤️ and clean code**
