@@ -77,40 +77,37 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-visual">
-                <div class="code-window" style="width: 100%; max-width: 350px; box-shadow: var(--shadow-lg);">
-                    <div class="window-header">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-left: auto;">profile.jpg</span>
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-label"><span class="status-dot"></span> DATA SYSTEMS / NAIROBI, KE</div>
+                    <h1 class="hero-title">I build the layer between <em>events and decisions.</em></h1>
+                    <p class="hero-desc">I am a data engineer and scientist building reliable pipelines, analytical products, and machine learning workflows for decisions that matter.</p>
+                    <div class="hero-actions">
+                        <a href="#work" class="btn-primary">Explore the work <span aria-hidden="true">↗</span></a>
+                        <a href="#contact" class="btn-secondary">Let's talk</a>
                     </div>
-                    <div class="window-content" style="padding: 1rem;">
-                        <div class="profile-image" style="width: 100%; height: 320px; border: none; border-radius: 6px; box-shadow: none; animation: none;">
-                            <img src="my-image.jpg" alt="Braeson Nyahera, data engineer and scientist" class="profile-img" width="1845" height="1845" fetchpriority="high">
+                </div>
+                <div class="hero-visual" aria-label="Illustration of a data pipeline from source to insight">
+                    <div class="pipeline-panel">
+                        <div class="pipeline-topline"><span>braeson.pipeline</span><span class="pipeline-live">LIVE / 03</span></div>
+                        <div class="pipeline-map">
+                            <div class="pipeline-node node-source"><span class="node-index">01</span><strong>Sources</strong><small>APIs / events / files</small></div>
+                            <div class="pipeline-line line-one"></div>
+                            <div class="pipeline-node node-transform"><span class="node-index">02</span><strong>Transform</strong><small>clean / model / test</small></div>
+                            <div class="pipeline-line line-two"></div>
+                            <div class="pipeline-node node-insight"><span class="node-index">03</span><strong>Insight</strong><small>metrics / models</small></div>
                         </div>
+                        <div class="pipeline-terminal"><span class="terminal-prompt">$</span> pipeline run --status <span class="terminal-success">success</span><span class="terminal-cursor"></span></div>
+                    </div>
+                    <div class="hero-image-stamp">
+                        <img src="my-image.jpg" alt="Braeson Nyahera, data engineer and scientist" width="1845" height="1845" fetchpriority="high">
+                        <span>BUILDER / RESEARCHER</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-content">
-                <div class="hero-label">DATA ENGINEER & SCIENTIST</div>
-                <h1 class="hero-title">
-                    <span class="word" style="--i: 0">Engineering</span>
-                    <span class="word" style="--i: 1">Data</span>
-                    <span class="word" style="--i: 2">Pipelines</span>
-                    <span class="word" style="--i: 3">&</span>
-                    <span class="word" style="--i: 4">Insights</span>
-                </h1>
-                <p class="hero-desc">I design scalable data infrastructures, build streaming pipelines, and apply statistical modeling to solve complex, real-world problems.</p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn-primary">Start a Project</a>
-                    <a href="#work" class="btn-secondary">View My Work</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -149,9 +146,11 @@
     </section>
 
     <!-- Work / Projects Timeline -->
-    <section id="work" class="work">
+        <section id="work" class="work">
         <div class="container">
-            <h2 class="section-title">Featured Work</h2>
+            <div class="section-kicker">SELECTED SYSTEMS / 2024-25</div>
+            <h2 class="section-title">Work that moves data forward.</h2>
+            <p class="section-intro">From health signals to delivery events, I build the infrastructure that turns raw activity into a clearer next decision.</p>
             <div class="projects-timeline">
                 <a href="projects/smarthealth.html" class="timeline-item">
                     <div class="timeline-marker"></div>
@@ -238,18 +237,6 @@
                 </div>
 
                 <div class="skill-category">
-                    <h4>Data Science & ML</h4>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">NumPy & Pandas</span>
-                        <span class="tag">Scikit-Learn</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Statistics</span>
-                        <span class="tag">Jupyter</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
                     <h4>Databases & Storage</h4>
                     <div class="skill-tags">
                         <span class="tag">PostgreSQL</span>
@@ -281,6 +268,7 @@
                         <span class="tag">Data Viz</span>
                         <span class="tag">A/B Testing</span>
                         <span class="tag">Metrics Modeling</span>
+                        <span class="tag">Power BI</span>
                         <span class="tag">Tableau</span>
                     </div>
                 </div>
@@ -346,6 +334,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
