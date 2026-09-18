@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://braeson-nyahera.github.io/sitemap.xml
